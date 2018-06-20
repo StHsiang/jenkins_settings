@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.17">
+  <actions/>
+  <description>pbs</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty/>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.4">
+      <gitLabConnection>gitlab</gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+      <triggers/>
+    </org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.45">
+    <script>library &apos;mylib@develop&apos;;
+import com.frame.tools.JenkinsBuilder;
+node {
+    stage(&quot;build&quot;){
+        def build = new JenkinsBuilder(this);
+        def prjs = [
+            [&quot;name&quot;:&quot;esale-cloud-pbs&quot;,&quot;cla&quot;:&quot;com.teynet.esale.pbs.PbsBootstrap&quot;,&quot;port&quot;:8672]
+        ];
+     //build.restart2(prjs, &apos;生产环境: 重启pbs成功&apos;, &apos;pbs&apos;,&quot;producttest&quot;);
+       build.restart3(prjs, &apos;生产环境&apos;, &apos;pbs&apos;);
+    }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

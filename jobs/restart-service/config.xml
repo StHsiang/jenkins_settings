@@ -1,0 +1,28 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.17">
+  <actions/>
+  <description>service</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty/>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.4">
+      <gitLabConnection>gitlab</gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.45">
+    <script>library &apos;mylib@develop&apos;;
+import com.frame.tools.JenkinsBuilder;
+node {
+def build = new JenkinsBuilder(this);
+def prjs = [
+    [&quot;name&quot;:&quot;esale-cloud-service&quot;,&quot;cla&quot;:&quot;com.teynet.esale.cloud.service.ServiceBootstrap&quot;,&quot;port&quot;:8605]
+];
+build.restart2(prjs, &apos;生产环境: 重启service成功&apos;, &apos;service&apos;,&quot;producttest&quot;);
+
+ //build.restart3(prjs, &apos;生产环境&apos;, &apos;service&apos;);
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>
