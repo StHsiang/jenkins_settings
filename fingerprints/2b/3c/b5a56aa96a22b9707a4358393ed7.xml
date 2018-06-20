@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2018-03-28 04:34:54.516 UTC</timestamp>
+  <md5sum>2b3cb5a56aa96a22b9707a4358393ed7</md5sum>
+  <fileName>Credential id=gitlab_user_for_jenkins name=jenkins/******</fileName>
+  <usages>
+    <entry>
+      <string>restart-esale-file</string>
+      <ranges>1-52</ranges>
+    </entry>
+    <entry>
+      <string>restart-esale-oms</string>
+      <ranges>1-109</ranges>
+    </entry>
+    <entry>
+      <string>restart-esale-dms</string>
+      <ranges>1-84</ranges>
+    </entry>
+    <entry>
+      <string>restart-service</string>
+      <ranges>1-109,111-245</ranges>
+    </entry>
+    <entry>
+      <string>restart-esale-rts</string>
+      <ranges>1-62</ranges>
+    </entry>
+    <entry>
+      <string>restart-esale-pbs</string>
+      <ranges>1-51,53-142</ranges>
+    </entry>
+    <entry>
+      <string>restart-esale-mbs</string>
+      <ranges>1-104</ranges>
+    </entry>
+    <entry>
+      <string>restart-esale-ums</string>
+      <ranges>1-115</ranges>
+    </entry>
+  </usages>
+  <facets/>
+</fingerprint>
